@@ -16,7 +16,6 @@ app.use(fileUpload());
 const chatSessions = new Map();
 
 app.post('/analyze', async (req, res) => {
-  // Get text from form data instead of body
   const text = req.body.text || req.files?.text?.data.toString();
   const systemInstruction = req.body.systemInstruction || "You are a recruiter hiring for Java developer. Your name is Eve.";
   const sessionId = req.body.sessionId || Date.now().toString();
@@ -36,7 +35,10 @@ app.post('/analyze', async (req, res) => {
     if (!chatSessions.has(sessionId)) {
       chat = ai.chats.create({
         model: "gemini-2.5-flash",
-        history: []
+        history: [],
+        config: {
+      systemInstruction: systemInstruction,
+    },
       });
       chatSessions.set(sessionId, chat);
     } else {
@@ -56,8 +58,8 @@ app.post('/analyze', async (req, res) => {
     }
 
     const response = await chat.sendMessageStream({
-      message: parts,
-      systemPrompt: systemInstruction
+      message: parts
+      // Remove systemPrompt from here as it's set during chat creation
     });
 
     for await (const chunk of response) {
