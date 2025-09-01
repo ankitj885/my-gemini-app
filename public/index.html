@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini Chat</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gemini Chat</h1>
+        <div class="chat-container">
+            <div id="chat-history"></div>
+            <div id="response-area"></div>
+        </div>
+        <form id="chat-form">
+            <div class="input-group">
+                <input type="text" id="system-instruction" placeholder="System Instructions (optional)">
+            </div>
+            <div class="input-group">
+                <input type="file" id="file-input">
+            </div>
+            <div class="input-group">
+                <textarea id="user-input" placeholder="Type your message here..." required></textarea>
+                <button type="submit">Send</button>
+            </div>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
