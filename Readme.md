@@ -26,7 +26,7 @@ An interactive chat application powered by Google's Gemini AI model that support
 
 1. **Clone the Repository**
    ```bash
-   git clone <repository-url>
+   git clone <https://github.com/ankitj885/my-gemini-app.git>
    cd my-gemini-app
    ```
 
